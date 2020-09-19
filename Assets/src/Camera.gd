@@ -1,9 +1,4 @@
-extends Actor
-
-export (NodePath) var playerObjectPath
-export var speed:= 100
-
-onready var PlayerObject:= get_node(playerObjectPath)
+extends Camera2D
 
 
 # Declare member variables here. Examples:
@@ -19,6 +14,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-func _physics_process(delta):
-	velocity = ( PlayerObject.position - position).normalized() * speed
