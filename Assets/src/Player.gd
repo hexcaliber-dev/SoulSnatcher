@@ -7,6 +7,7 @@ var horizontal_input_strength
 var current_vertical_speed = Vector2(0, 0)
 var current_horizontal_speed = Vector2(0, 0)
 var direction
+var mouse_direction
 var attack_state = ATTACK_STATE.NEUTRAL
 
 export var speed:= 500
@@ -25,14 +26,10 @@ func _process(delta):
 
 func _physics_process(delta):
 	if(attack_state == ATTACK_STATE.DASHING):
-		velocity = 0
 		pass
-	elif (Input.get_action_strength("Dash")):
-		attack_state = ATTACK_STATE.DASHING
-		dash()
 	else:
 		movement(delta)
-	print( get_viewport().get_mouse_position() )
+	# print( get_viewport().get_mouse_position() )
 func dash():
 	pass
 func movement(delta):
@@ -40,3 +37,10 @@ func movement(delta):
 	horizontal_input_strength = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	direction = Vector2(horizontal_input_strength, vertical_input_strength).normalized()
 	velocity = velocity.linear_interpolate( direction*speed, delta*drag_weight )
+
+
+func _on_DashCast_dashPressed(objectHit):
+	if (objectHit != null):
+		print(objectHit)
+		attack_state = ATTACK_STATE.DASHING
+		dash()
