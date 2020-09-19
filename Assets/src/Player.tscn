@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Sprites/blank-white-square-thumbnail.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/src/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/src/Camera.gd" type="Script" id=3]
 [ext_resource path="res://Assets/src/DashCast.gd" type="Script" id=4]
 [ext_resource path="res://Assets/src/DashObject.gd" type="Script" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -28,6 +29,14 @@ script = ExtResource( 3 )
 script = ExtResource( 5 )
 
 [node name="DashCast" type="RayCast2D" parent="DashObject"]
+position = Vector2( 32.5881, -0.295441 )
+rotation = -1.5708
+scale = Vector2( 1, 8.36 )
 enabled = true
+collision_mask = 8
 script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="DashObject"]
+scale = Vector2( 0.342706, 0.342706 )
+texture = ExtResource( 6 )
 [connection signal="dashPressed" from="DashObject/DashCast" to="." method="_on_DashCast_dashPressed"]
