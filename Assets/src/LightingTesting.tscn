@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/src/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/src/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sprites/black.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/light.png" type="Texture" id=4]
+
+[node name="MovementTesting" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 633.23, 396.558 )
+scale = Vector2( 2.36275, 2.27799 )
+texture = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+[node name="Light2D" type="Light2D" parent="Player"]
+position = Vector2( -38.8586, -9.58344 )
+texture = ExtResource( 4 )
+color = Color( 1, 0.992157, 0.984314, 1 )
+energy = 1.62
+shadow_enabled = true
+shadow_color = Color( 1, 1, 1, 0 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 307.296, 202.261 )
+collision_layer = 8
+playerObjectPath = NodePath("../Player")
