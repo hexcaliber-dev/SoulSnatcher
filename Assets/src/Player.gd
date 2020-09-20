@@ -25,22 +25,31 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	if(attack_state == ATTACK_STATE.DASHING):
-		pass
-	else:
+	# if(attack_state == ATTACK_STATE.DASHING):
+	# 	pass
+	# else:
 		movement(delta)
 	# print( get_viewport().get_mouse_position() )
-func dash():
-	pass
+
 func movement(delta):
 	vertical_input_strength = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	horizontal_input_strength = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	direction = Vector2(horizontal_input_strength, vertical_input_strength).normalized()
 	velocity = velocity.linear_interpolate( direction*speed, delta*drag_weight )
 
+func dash():
+	yield(get_tree().create_timer(0.5), "timeout")
+	print("Hello")
+	print(get_angle_to(get_global_mouse_position()))
+	var radians = get_angle_to(get_global_mouse_position())
+	position += Vector2(cos(radians), sin(radians)) * 100
+	attack_state = ATTACK_STATE.NEUTRAL
+	# position += get_angle_to(get_global_mouse_position())
+	
 
 func _on_DashCast_dashPressed(objectHit):
-	if (objectHit != null):
-		print(objectHit)
+	print("hi")
+	if (objectHit != null and attack_state != ATTACK_STATE.DASHING):
+		print(attack_state)
 		attack_state = ATTACK_STATE.DASHING
 		dash()

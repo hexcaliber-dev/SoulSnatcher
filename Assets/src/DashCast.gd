@@ -15,6 +15,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.get_action_strength("Dash")):
-		print(is_colliding())
 		if( is_colliding() ):
-			emit_signal("dashedPressed", get_collider() )
+			emit_signal("dashPressed", get_collider() )
