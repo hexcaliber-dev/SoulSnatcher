@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/src/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/src/PlayerCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/abstract-galaxy-background_1199-247.jpg" type="Texture" id=4]
 
 [node name="MovementTesting" type="Node2D"]
+
+[node name="abstract-galaxy-background_1199-247" type="Sprite" parent="."]
+position = Vector2( 527.879, 317.289 )
+scale = Vector2( 2.55356, 2.55356 )
+texture = ExtResource( 4 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 current = true
@@ -16,3 +22,4 @@ playerObjectPath = NodePath("../Player")
 position = Vector2( 307.296, 202.261 )
 collision_layer = 8
 playerObjectPath = NodePath("../Player")
+[connection signal="dash_signal" from="Player" to="PlayerCamera" method="_on_Player_dash_signal"]

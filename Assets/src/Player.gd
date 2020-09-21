@@ -12,8 +12,9 @@ var attack_state = ATTACK_STATE.NEUTRAL
 
 export var speed:= 500
 export var drag_weight:= 10
+export var dash_start_time:= 0.2
 
-
+signal dash_signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,18 +39,16 @@ func movement(delta):
 	velocity = velocity.linear_interpolate( direction*speed, delta*drag_weight )
 
 func dash():
-	yield(get_tree().create_timer(0.5), "timeout")
-	print("Hello")
-	print(get_angle_to(get_global_mouse_position()))
+	yield(get_tree().create_timer(dash_start_time), "timeout")
+	emit_signal("dash_signal")
 	var radians = get_angle_to(get_global_mouse_position())
-	position += Vector2(cos(radians), sin(radians)) * 100
+	position += Vector2(cos(radians), sin(radians)) * 400
 	attack_state = ATTACK_STATE.NEUTRAL
 	# position += get_angle_to(get_global_mouse_position())
 	
 
 func _on_DashCast_dashPressed(objectHit):
-	print("hi")
-	if (objectHit != null and attack_state != ATTACK_STATE.DASHING):
-		print(attack_state)
-		attack_state = ATTACK_STATE.DASHING
-		dash()
+	if (attack_state != ATTACK_STATE.DASHING):
+		# if(objectHit != null): Uncomment when want only when hitting enemy
+			attack_state = ATTACK_STATE.DASHING
+			dash()
