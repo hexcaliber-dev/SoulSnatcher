@@ -13,9 +13,27 @@ _global_script_classes=[ {
 "class": "Actor",
 "language": "GDScript",
 "path": "res://Actor.gd"
+}, {
+"base": "Actor",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Assets/src/Enemy.gd"
+}, {
+"base": "Actor",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Assets/src/Player.gd"
+}, {
+"base": "Actor",
+"class": "Wisp",
+"language": "GDScript",
+"path": "res://Assets/src/Wisp.gd"
 } ]
 _global_script_class_icons={
-"Actor": ""
+"Actor": "",
+"Enemy": "",
+"Player": "",
+"Wisp": ""
 }
 
 [application]

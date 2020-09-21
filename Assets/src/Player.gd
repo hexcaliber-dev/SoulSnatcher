@@ -1,4 +1,5 @@
 extends Actor
+class_name Player
 
 enum ATTACK_STATE {NEUTRAL, DASHING, DASHED}
 
@@ -49,6 +50,10 @@ func dash():
 
 func _on_DashCast_dashPressed(objectHit):
 	if (attack_state != ATTACK_STATE.DASHING):
-		# if(objectHit != null): Uncomment when want only when hitting enemy
-			attack_state = ATTACK_STATE.DASHING
-			dash()
+		attack_state = ATTACK_STATE.DASHING
+		dash()
+		if(objectHit != null): 
+			if (objectHit is Enemy):
+				print("Enemy Hit")
+				objectHit.die()
+		

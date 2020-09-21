@@ -1,11 +1,14 @@
 extends Actor
-
+class_name Wisp
 # movement speed when directing to player
 export var speed := 500
 
 # current player in range
 var player:Actor = null
 
+func _process(delta):
+	pass
+	
 # If player in range, moves toward player; if not, slows to stop
 func _physics_process(_delta: float) -> void:
 	if player:
@@ -27,4 +30,5 @@ func _on_Magnet_body_exited(body: Node) -> void:
 
 # If a player comes into contact with wisp, wisp will disappear
 func _on_PlayerTouch_body_entered(body: Node) -> void:
-	queue_free()
+	if (body is Player):
+		queue_free()
