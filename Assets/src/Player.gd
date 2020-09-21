@@ -1,14 +1,10 @@
 extends Actor
 
-enum ATTACK_STATE {NEUTRAL, DASHING, DASHED}
-
 var vertical_input_strength
 var horizontal_input_strength
 var current_vertical_speed = Vector2(0, 0)
 var current_horizontal_speed = Vector2(0, 0)
 var direction
-var mouse_direction
-var attack_state = ATTACK_STATE.NEUTRAL
 
 export var speed:= 500
 export var drag_weight:= 10
@@ -22,17 +18,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
 func _physics_process(delta):
-	# if(attack_state == ATTACK_STATE.DASHING):
-	# 	pass
-	# else:
-		movement(delta)
-	# print( get_viewport().get_mouse_position() )
-
-func movement(delta):
 	vertical_input_strength = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	horizontal_input_strength = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	direction = Vector2(horizontal_input_strength, vertical_input_strength).normalized()
