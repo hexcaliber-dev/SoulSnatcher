@@ -1,6 +1,7 @@
 extends Actor
 class_name Player
 
+
 enum ATTACK_STATE {NEUTRAL, DASHING, DASHED}
 
 var vertical_input_strength
@@ -53,7 +54,6 @@ func _on_DashCast_dashPressed(objectHit):
 		attack_state = ATTACK_STATE.DASHING
 		dash()
 		if(objectHit != null): 
-			if (objectHit is Enemy):
-				print("Enemy Hit")
-				objectHit.die()
+			print("Enemy Hit")
+			objectHit.die()
 		
