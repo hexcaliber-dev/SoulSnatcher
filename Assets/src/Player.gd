@@ -11,10 +11,12 @@ var current_horizontal_speed = Vector2(0, 0)
 var direction
 var mouse_direction
 var attack_state = ATTACK_STATE.NEUTRAL
-
+export var current_luminence = 50
 export var speed:= 500
 export var drag_weight:= 10
 export var dash_start_time:= 0.2
+ 
+export var max_luminence:= 100
 
 signal dash_signal
 
