@@ -1,6 +1,7 @@
 extends Actor
 class_name Player
 
+export (NodePath) var player_light_object_path
 
 enum ATTACK_STATE {NEUTRAL, DASHING, DASHED}
 
@@ -11,10 +12,17 @@ var current_horizontal_speed = Vector2(0, 0)
 var direction
 var mouse_direction
 var attack_state = ATTACK_STATE.NEUTRAL
-
+export var current_luminence = 100
 export var speed:= 500
 export var drag_weight:= 10
 export var dash_start_time:= 0.2
+export var light_scale_min:= 0
+export var light_scale_max:= 3
+export var luminence_reduction_rate:= 0.1
+ 
+export var max_luminence:= 100
+
+onready var player_light = get_node(player_light_object_path)
 
 signal dash_signal
 
@@ -28,9 +36,15 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	# if(attack_state == ATTACK_STATE.DASHING):
-	# 	pass
-	# else:
+	if (current_luminence >= 0):
+		current_luminence -= luminence_reduction_rate
+	else:
+		# Game Over
+		print("Game Over")
+	player_light.set_texture_scale( (current_luminence/max_luminence)*light_scale_max )
+	if(attack_state == ATTACK_STATE.DASHING):
+		pass
+	else:
 		movement(delta)
 	# print( get_viewport().get_mouse_position() )
 
