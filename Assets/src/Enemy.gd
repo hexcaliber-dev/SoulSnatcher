@@ -27,11 +27,14 @@ func _ready():
 func _physics_process(delta):
 	if PlayerObject != null:
 		velocity = ( PlayerObject.position - position).normalized() * speed
+		look_at(PlayerObject.position)
 	else:
 		PlayerObject = get_parent().get_node("Player")
 
 func die():
 	# play death Animation
+	if PlayerObject != null:
+		yield(get_tree().create_timer(PlayerObject.dash_start_time), "timeout")
 	var wisp_instance = wispScene.instance()
 	get_parent().add_child(wisp_instance)
 	# wisp_instance.position = position

@@ -2,6 +2,7 @@ extends Actor
 class_name Player
 
 export (NodePath) var player_light_object_path
+export (NodePath) var player_sprite_object_path
 
 enum ATTACK_STATE {NEUTRAL, DASHING, DASHED}
 
@@ -22,7 +23,11 @@ export var luminence_reduction_rate:= 0.1
  
 export var max_luminence:= 100
 
+export(Texture) var character_up
+export(Texture) var character_down
+
 onready var player_light = get_node(player_light_object_path)
+onready var player_sprite = get_node(player_sprite_object_path)
 
 signal dash_signal
 
@@ -49,6 +54,10 @@ func _physics_process(delta):
 	# print( get_viewport().get_mouse_position() )
 
 func movement(delta):
+	if (Input.get_action_strength("Up") > 0):
+		player_sprite.set_texture(character_up)
+	else:
+		player_sprite.set_texture(character_down)
 	vertical_input_strength = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	horizontal_input_strength = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	direction = Vector2(horizontal_input_strength, vertical_input_strength).normalized()

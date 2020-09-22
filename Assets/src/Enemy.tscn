@@ -39,12 +39,14 @@ scale = Vector2( 1.56261, 1.56261 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2.20486 )
+position = Vector2( 0, -0.0498886 )
+rotation = -1.56758
 scale = Vector2( 2.62775, 2.62775 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -7.55952 )
+position = Vector2( -5.02826, -0.0171337 )
+rotation = -1.56758
 frames = SubResource( 6 )
 frame = 3
 playing = true
