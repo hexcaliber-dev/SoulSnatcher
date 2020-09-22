@@ -25,7 +25,10 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
-	velocity = ( PlayerObject.position - position).normalized() * speed
+	if PlayerObject != null:
+		velocity = ( PlayerObject.position - position).normalized() * speed
+	else:
+		PlayerObject = get_parent().get_node("Player")
 
 func die():
 	# play death Animation
