@@ -38,7 +38,6 @@ scale = Vector2( 0.342706, 0.342706 )
 texture = ExtResource( 6 )
 
 [node name="PlayerLight" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0.428833, 0.193542 )
 texture_scale = 3.0
 energy = 1.68
 [connection signal="dashPressed" from="DashObject/DashCast" to="." method="_on_DashCast_dashPressed"]
