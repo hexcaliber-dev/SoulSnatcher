@@ -12,6 +12,7 @@
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 527.262, 316.357 )
 script = ExtResource( 2 )
+player_light_object_path = NodePath("PlayerLight")
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.104743, 0.104743 )
@@ -36,6 +37,8 @@ script = ExtResource( 4 )
 scale = Vector2( 0.342706, 0.342706 )
 texture = ExtResource( 6 )
 
-[node name="Light2D" parent="." instance=ExtResource( 3 )]
+[node name="PlayerLight" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0.428833, 0.193542 )
+texture_scale = 3.0
+energy = 1.68
 [connection signal="dashPressed" from="DashObject/DashCast" to="." method="_on_DashCast_dashPressed"]
