@@ -20,7 +20,7 @@ func _ready():
 	
 	print(cells)
 	for cell in cells:
-		set_cell(cell.x, cell.y, rng.randi_range(0, tile_ids_array.size()) )
+		set_cell(cell.x, cell.y, rng.randi_range(0, tile_ids_array.size()-1) )
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
