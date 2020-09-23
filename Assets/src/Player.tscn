@@ -13,6 +13,7 @@
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 527.262, 316.357 )
+collision_layer = 3
 script = ExtResource( 2 )
 player_light_object_path = NodePath("PlayerLight")
 player_sprite_object_path = NodePath("Sprite")
