@@ -100,6 +100,9 @@ func cursor_udpate():
 		2:
 			Input.set_custom_mouse_cursor(crosshair_2)
 
+func increase_luminence(quantity):
+	current_luminence += quantity
+
 func _on_DashCast_dashPressed(objectHit):
 	if (attack_state != ATTACK_STATE.DASHING and slash_charges > 0):
 		slash_charges -= 1

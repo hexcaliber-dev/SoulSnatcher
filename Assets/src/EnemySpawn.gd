@@ -4,8 +4,13 @@ extends Node
 # var a = 2
 # var b = "text"
 
+export (NodePath) var playerObjectPath
+
 export var spawn_interval = 3 # Time between enemy spawns, in seconds.
 export var spawn_range = 5 # Distance away from player this enemy should spawn
+
+onready var PlayerObject:= get_node(playerObjectPath)
+
 var enemy = load("res://Assets/src/Enemy.tscn")
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +26,8 @@ func _ready():
 func spawn_enemy():
 	# print("SPAWN")
 	var new_enemy = enemy.instance()
+	new_enemy.init(PlayerObject)
+	new_enemy.set_collision_layer(8) # 8 Is enemy collision layer values
 	var player_pos = get_parent().get_node("Player").position
 	rng.randomize()
 	var spawn_pos = player_pos + Vector2(rng.randf_range(-spawn_range, spawn_range),
