@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Sprites/soulcounter.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/luminance_empty.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/upgrade_tier_1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/luminance_bar.png" type="Texture" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+margin_left = 16.0459
+margin_top = 15.102
+margin_right = 56.0459
+margin_bottom = 55.102
+rect_scale = Vector2( 1.37112, 1.37112 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+margin_left = 56.3527
+margin_top = 26.9858
+margin_right = 96.3527
+margin_bottom = 40.9858
+rect_scale = Vector2( 2.17238, 2.17238 )
+text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect2"]
+margin_left = -34.8298
+margin_top = -133.877
+margin_right = 5.17017
+margin_bottom = -46.8774
+rect_scale = Vector2( 1.37112, 1.37112 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="NinePatchRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -34.8298
+margin_top = -133.283
+margin_right = 5.17017
+margin_bottom = -46.2828
+rect_scale = Vector2( 1.371, 1.353 )
+texture = ExtResource( 4 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="NinePatchRect2"]
+margin_left = -40.4932
+margin_top = -23.3319
+margin_right = -0.493164
+margin_bottom = 63.6681
+rect_scale = Vector2( 1.37112, 1.37112 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
