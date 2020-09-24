@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Sprites/blank-white-square-thumbnail.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/src/Player.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Sprites/crosshair_0.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Sprites/crosshair_1.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Sprites/crosshair_2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/src/DashLine.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -54,4 +55,7 @@ texture = ExtResource( 6 )
 [node name="PlayerLight" parent="." instance=ExtResource( 3 )]
 texture_scale = 3.0
 energy = 1.68
+
+[node name="Line2D" type="Line2D" parent="."]
+script = ExtResource( 12 )
 [connection signal="dashPressed" from="DashObject/DashCast" to="." method="_on_DashCast_dashPressed"]
