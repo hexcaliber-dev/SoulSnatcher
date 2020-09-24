@@ -89,7 +89,8 @@ func dash():
 	# position += get_angle_to(get_global_mouse_position())
 	
 func charge_dash(delta):
-	if (slash_charges == max_dash_charges):
+	if (slash_charges >= max_dash_charges):
+		slash_charges = max_dash_charges
 		time = 0
 	else:
 		time += delta
@@ -110,13 +111,15 @@ func cursor_udpate():
 func increase_luminence(quantity):
 	current_luminence += quantity
 
-func _on_DashCast_dashPressed(objectHit):
+func on_DashCast_function(objectHit):
 	if (attack_state != ATTACK_STATE.DASHING and slash_charges > 0):
 		slash_charges -= 1
 		attack_state = ATTACK_STATE.DASHING
 		dash()
-		if(objectHit != null): 
-			print("Enemy Hit")
-			objectHit.die()
-			slash_charges += 1
-		
+	if(objectHit != null and attack_state == ATTACK_STATE.DASHING): 
+		print("Enemy Hit")
+		objectHit.die()
+		slash_charges += 1
+
+func _on_DashCast_dashPressed(objectHit):
+	on_DashCast_function(objectHit)
