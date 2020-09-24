@@ -42,6 +42,10 @@ config/name="SoulSnatcher"
 run/main_scene="res://Assets/src/Player.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+mouse_cursor/custom_image="res://Assets/Sprites/crosshair_0.png"
+
 [input]
 
 Up={

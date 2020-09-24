@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Sprites/blank-white-square-thumbnail.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/src/Player.gd" type="Script" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/reaper_down.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/reaper_up.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/crosshair_0.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/crosshair_1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/crosshair_2.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -19,9 +22,12 @@ player_light_object_path = NodePath("PlayerLight")
 player_sprite_object_path = NodePath("Sprite")
 character_up = ExtResource( 8 )
 character_down = ExtResource( 7 )
+crosshair_0 = ExtResource( 9 )
+crosshair_1 = ExtResource( 10 )
+crosshair_2 = ExtResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 5.24408, -0.749146 )
+position = Vector2( 0.524719, -0.749146 )
 scale = Vector2( 1.30474, 1.30474 )
 texture = ExtResource( 1 )
 
@@ -30,13 +36,13 @@ scale = Vector2( -4.07401, -4.07401 )
 shape = SubResource( 1 )
 
 [node name="DashObject" type="Node2D" parent="."]
-position = Vector2( -7.56805, 0 )
+position = Vector2( -0.0170245, 0 )
 script = ExtResource( 5 )
 
 [node name="DashCast" type="RayCast2D" parent="DashObject"]
 position = Vector2( 32.5881, -0.295441 )
 rotation = -1.5708
-scale = Vector2( 1, 8.36 )
+scale = Vector2( 33.579, 8.36 )
 enabled = true
 collision_mask = 8
 script = ExtResource( 4 )

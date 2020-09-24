@@ -13,6 +13,9 @@ var current_horizontal_speed = Vector2(0, 0)
 var direction
 var mouse_direction
 var attack_state = ATTACK_STATE.NEUTRAL
+var slash_charges = 2
+var time = 0
+
 export var current_luminence = 100
 export var speed:= 500
 export var drag_weight:= 10
@@ -20,11 +23,15 @@ export var dash_start_time:= 0.2
 export var light_scale_min:= 0
 export var light_scale_max:= 3
 export var luminence_reduction_rate:= 0.1
- 
 export var max_luminence:= 100
+export var max_dash_charges:= 2
+export var charge_time:= 2
 
 export(Texture) var character_up
 export(Texture) var character_down
+export(StreamTexture) var crosshair_0
+export(StreamTexture) var crosshair_1
+export(StreamTexture) var crosshair_2
 
 onready var player_light = get_node(player_light_object_path)
 onready var player_sprite = get_node(player_sprite_object_path)
@@ -38,7 +45,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	charge_dash(delta)
+	cursor_udpate()
+	
+	
 
 func _physics_process(delta):
 	if (current_luminence >= 0):
@@ -71,12 +81,32 @@ func dash():
 	attack_state = ATTACK_STATE.NEUTRAL
 	# position += get_angle_to(get_global_mouse_position())
 	
+func charge_dash(delta):
+	if (slash_charges == max_dash_charges):
+		time = 0
+	else:
+		time += delta
+	if (slash_charges < max_dash_charges and time >= charge_time):
+		print("Charged")
+		slash_charges += 1
+		time = 0
+		
+func cursor_udpate():
+	match slash_charges:
+		0:
+			Input.set_custom_mouse_cursor(crosshair_0)
+		1:
+			Input.set_custom_mouse_cursor(crosshair_1)
+		2:
+			Input.set_custom_mouse_cursor(crosshair_2)
 
 func _on_DashCast_dashPressed(objectHit):
-	if (attack_state != ATTACK_STATE.DASHING):
+	if (attack_state != ATTACK_STATE.DASHING and slash_charges > 0):
+		slash_charges -= 1
 		attack_state = ATTACK_STATE.DASHING
 		dash()
 		if(objectHit != null): 
 			print("Enemy Hit")
 			objectHit.die()
+			slash_charges += 1
 		
