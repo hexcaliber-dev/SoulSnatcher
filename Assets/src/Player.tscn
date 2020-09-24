@@ -198,9 +198,25 @@ position = Vector2( -0.0170245, 0 )
 script = ExtResource( 5 )
 
 [node name="DashCast" type="RayCast2D" parent="DashObject"]
-position = Vector2( 32.5881, -0.295441 )
+position = Vector2( 32.5881, -0.360321 )
 rotation = -1.5708
-scale = Vector2( 33.579, 8.36 )
+scale = Vector2( 1, 8.36 )
+enabled = true
+collision_mask = 8
+script = ExtResource( 4 )
+
+[node name="DashCast2" type="RayCast2D" parent="DashObject"]
+position = Vector2( 32.5881, -21.7178 )
+rotation = -1.5708
+scale = Vector2( 1, 8.36 )
+enabled = true
+collision_mask = 8
+script = ExtResource( 4 )
+
+[node name="DashCast3" type="RayCast2D" parent="DashObject"]
+position = Vector2( 32.5881, 21.6645 )
+rotation = -1.5708
+scale = Vector2( 1, 8.36 )
 enabled = true
 collision_mask = 8
 script = ExtResource( 4 )
@@ -216,3 +232,5 @@ energy = 1.68
 [node name="Line2D" type="Line2D" parent="."]
 script = ExtResource( 12 )
 [connection signal="dashPressed" from="DashObject/DashCast" to="." method="_on_DashCast_dashPressed"]
+[connection signal="dashPressed" from="DashObject/DashCast2" to="." method="_on_DashCast_dashPressed"]
+[connection signal="dashPressed" from="DashObject/DashCast3" to="." method="_on_DashCast_dashPressed"]
