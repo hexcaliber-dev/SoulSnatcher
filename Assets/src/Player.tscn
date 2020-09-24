@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=42 format=2]
 
-[ext_resource path="res://Assets/Sprites/blank-white-square-thumbnail.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/src/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/src/PlayerLight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/src/DashCast.gd" type="Script" id=4]
@@ -12,6 +11,163 @@
 [ext_resource path="res://Assets/Sprites/crosshair_1.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Sprites/crosshair_2.png" type="Texture" id=11]
 [ext_resource path="res://Assets/src/DashLine.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Sprites/reaper_down_attack.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/reaper_up_blade.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/reaper_up_attack.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/reaper_down_blade.png" type="Texture" id=16]
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 256, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 384, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 512, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 256, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 384, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 512, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 256, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 384, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 512, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 640, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 256, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 384, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 512, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 640, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "reaper_down",
+"speed": 0.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 2 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "reaper_down_attack",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "reaper_up_attack",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": false,
+"name": "reaper_up_blade",
+"speed": 20.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": false,
+"name": "reaper_down_blade",
+"speed": 20.0
+}, {
+"frames": [ SubResource( 26 ) ],
+"loop": true,
+"name": "reaper_up",
+"speed": 0.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -20,17 +176,18 @@ position = Vector2( 527.262, 316.357 )
 collision_layer = 3
 script = ExtResource( 2 )
 player_light_object_path = NodePath("PlayerLight")
-player_sprite_object_path = NodePath("Sprite")
+player_animated_sprite_object_path = NodePath("AnimatedSprite")
 character_up = ExtResource( 8 )
 character_down = ExtResource( 7 )
 crosshair_0 = ExtResource( 9 )
 crosshair_1 = ExtResource( 10 )
 crosshair_2 = ExtResource( 11 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.524719, -0.749146 )
-scale = Vector2( 1.30474, 1.30474 )
-texture = ExtResource( 1 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.32097, 1.32097 )
+frames = SubResource( 7 )
+animation = "reaper_down"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( -4.07401, -4.07401 )

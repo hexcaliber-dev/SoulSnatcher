@@ -3,6 +3,7 @@ class_name Player
 
 export (NodePath) var player_light_object_path
 export (NodePath) var player_sprite_object_path
+export (NodePath) var player_animated_sprite_object_path
 
 enum ATTACK_STATE {NEUTRAL, DASHING, DASHED}
 
@@ -35,6 +36,7 @@ export(StreamTexture) var crosshair_2
 
 onready var player_light = get_node(player_light_object_path)
 onready var player_sprite = get_node(player_sprite_object_path)
+onready var player_animated_sprite = get_node(player_animated_sprite_object_path)
 
 signal dash_signal
 
@@ -65,18 +67,23 @@ func _physics_process(delta):
 
 func movement(delta):
 	if (Input.get_action_strength("Up") > 0):
-		player_sprite.set_texture(character_up)
-	else:
-		player_sprite.set_texture(character_down)
+		player_animated_sprite.play("reaper_up")
+	if (Input.get_action_strength("Down") > 0):
+		player_animated_sprite.play("reaper_down")
 	vertical_input_strength = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	horizontal_input_strength = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	direction = Vector2(horizontal_input_strength, vertical_input_strength).normalized()
 	velocity = velocity.linear_interpolate( direction*speed, delta*drag_weight )
 
 func dash():
+	var radians = get_angle_to(get_global_mouse_position())
+	if (sin(radians) > 0): player_animated_sprite.play("reaper_down_blade")
+	else: player_animated_sprite.play("reaper_up_blade")
 	yield(get_tree().create_timer(dash_start_time), "timeout")
 	emit_signal("dash_signal")
-	var radians = get_angle_to(get_global_mouse_position())
+	if (sin(radians) > 0): player_animated_sprite.play("reaper_down")
+	else: player_animated_sprite.play("reaper_up")
+	print(cos(radians))
 	position += Vector2(cos(radians), sin(radians)) * 400
 	attack_state = ATTACK_STATE.NEUTRAL
 	# position += get_angle_to(get_global_mouse_position())
