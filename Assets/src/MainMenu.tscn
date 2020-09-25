@@ -23,9 +23,9 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="NinePatchRect"]
-margin_left = -10.8053
+margin_left = -46.083
 margin_top = -174.119
-margin_right = 30.1947
+margin_right = -5.08301
 margin_bottom = -154.119
 rect_scale = Vector2( 3.00314, 3.00314 )
 text = "Start"
