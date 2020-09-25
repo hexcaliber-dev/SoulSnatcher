@@ -16,6 +16,7 @@ var mouse_direction
 var attack_state = ATTACK_STATE.NEUTRAL
 var slash_charges = 2
 var time = 0
+var total_soul_count = 0
 
 export var current_luminence = 100
 export var speed:= 500
@@ -41,8 +42,8 @@ onready var player_animated_sprite = get_node(player_animated_sprite_object_path
 signal dash_signal
 
 
-func get_current_luminence():
-	return current_luminence/max_luminence
+func get_current_luminence(): return current_luminence/max_luminence
+func get_total_soul_count(): return total_soul_count
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -113,6 +114,7 @@ func cursor_udpate():
 			Input.set_custom_mouse_cursor(crosshair_2)
 
 func increase_luminence(quantity):
+	total_soul_count += 1
 	current_luminence += quantity
 
 func on_DashCast_function(objectHit):

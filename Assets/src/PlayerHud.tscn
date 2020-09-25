@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Sprites/soulcounter.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/luminance_empty.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Assets/Sprites/luminance_bar_6.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Sprites/luminance_bar_full.png" type="Texture" id=15]
 [ext_resource path="res://Assets/src/PlayerHud.gd" type="Script" id=16]
+[ext_resource path="res://Assets/src/SoulAmountLabel.gd" type="Script" id=17]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -40,16 +41,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="NinePatchRect"]
+[node name="SoulAmountLabel" type="Label" parent="NinePatchRect"]
 margin_left = 56.3527
 margin_top = 26.9858
 margin_right = 96.3527
 margin_bottom = 40.9858
 rect_scale = Vector2( 2.17238, 2.17238 )
 text = "99"
+script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+player_hud_path = NodePath("../..")
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 anchor_left = 1.0
