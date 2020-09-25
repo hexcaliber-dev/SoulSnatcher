@@ -116,6 +116,8 @@ func cursor_udpate():
 func increase_luminence(quantity):
 	total_soul_count += 1
 	current_luminence += quantity
+	if (current_luminence > max_luminence):
+		current_luminence = max_luminence
 
 func on_DashCast_function(objectHit):
 	if (attack_state != ATTACK_STATE.DASHING and slash_charges > 0):

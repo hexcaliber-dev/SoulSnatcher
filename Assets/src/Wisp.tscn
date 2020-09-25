@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/src/Wisp.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/soul_coward.png" type="Texture" id=3]
+[ext_resource path="res://Assets/src/PlayerLight.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -47,10 +48,15 @@ script = ExtResource( 1 )
 visible = false
 texture = ExtResource( 2 )
 
+[node name="Light2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0.428833, 28.2693 )
+scale = Vector2( 3.16856, 3.16856 )
+texture_scale = 0.07
+energy = 1.08
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.54838, 1.54838 )
 frames = SubResource( 5 )
-frame = 2
 playing = true
 
 [node name="Magnet" type="Area2D" parent="."]
