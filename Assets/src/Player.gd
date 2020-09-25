@@ -40,6 +40,10 @@ onready var player_animated_sprite = get_node(player_animated_sprite_object_path
 
 signal dash_signal
 
+
+func get_current_luminence():
+	return current_luminence/max_luminence
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
