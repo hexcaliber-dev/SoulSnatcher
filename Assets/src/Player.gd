@@ -5,6 +5,7 @@ export (NodePath) var player_light_object_path
 export (NodePath) var player_sprite_object_path
 export (NodePath) var player_animated_sprite_object_path
 
+
 enum ATTACK_STATE {NEUTRAL, DASHING, DASHED}
 
 var vertical_input_strength
@@ -28,6 +29,7 @@ export var luminence_reduction_rate:= 0.1
 export var max_luminence:= 100
 export var max_dash_charges:= 2
 export var charge_time:= 2
+export var path_to_end_game:= "res://Assets/src/DeathScreen.tscn"
 
 export(Texture) var character_up
 export(Texture) var character_down
@@ -61,8 +63,7 @@ func _physics_process(delta):
 	if (current_luminence >= 0):
 		current_luminence -= luminence_reduction_rate
 	else:
-		# Game Over
-		print("Game Over")
+		get_tree().change_scene(path_to_end_game)
 	player_light.set_texture_scale( (current_luminence/max_luminence)*light_scale_max )
 	if(attack_state == ATTACK_STATE.DASHING):
 		pass

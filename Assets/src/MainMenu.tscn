@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/src/StartButton.gd" type="Script" id=1]
+[ext_resource path="res://Assets/src/PlayerLight.tscn" type="PackedScene" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="NinePatchRect"]
+margin_left = -10.8053
+margin_top = -174.119
+margin_right = 30.1947
+margin_bottom = -154.119
+rect_scale = Vector2( 3.00314, 3.00314 )
+text = "Start"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+light_object_path = NodePath("Light2D")
+
+[node name="Light2D" parent="NinePatchRect/Button" instance=ExtResource( 3 )]
+position = Vector2( 21.8251, 9.42331 )
