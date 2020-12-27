@@ -44,6 +44,7 @@ onready var player_sprite = get_node(player_sprite_object_path)
 onready var player_animated_sprite = get_node(player_animated_sprite_object_path)
 
 signal dash_signal
+signal cursor_signal
 
 
 func get_current_luminence(): return current_luminence/max_luminence
@@ -121,11 +122,11 @@ func charge_dash(delta):
 func cursor_udpate():
 	match slash_charges:
 		0:
-			Input.set_custom_mouse_cursor(crosshair_0)
+			emit_signal("cursor_signal", crosshair_0)
 		1:
-			Input.set_custom_mouse_cursor(crosshair_1)
+			emit_signal("cursor_signal", crosshair_1)
 		2:
-			Input.set_custom_mouse_cursor(crosshair_2)
+			emit_signal("cursor_signal", crosshair_2)
 
 func increase_luminence(quantity):
 	total_soul_count += 1
