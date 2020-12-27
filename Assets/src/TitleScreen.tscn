@@ -46,14 +46,12 @@ scale = Vector2( 2.05835, 2.11051 )
 position = Vector2( 799.193, 880.01 )
 scale = Vector2( 2.30609, 2.30609 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( 1126.95, 880.01 )
 scale = Vector2( 2.30609, 2.30609 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -69,3 +67,6 @@ margin_right = 159.995
 margin_bottom = 208.866
 rect_scale = Vector2( 1.49204, 1.49204 )
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

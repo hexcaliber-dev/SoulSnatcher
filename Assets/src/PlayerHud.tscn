@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Sprites/soulcounter.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/luminance_empty.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/upgrade_tier_1.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/luminance_bar.png" type="Texture" id=4]
 [ext_resource path="res://Assets/src/LuminenceMeter.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Sprites/luminance_bar_2.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/luminance_bar_1.png" type="Texture" id=7]
@@ -84,7 +83,7 @@ margin_top = -133.283
 margin_right = 5.17017
 margin_bottom = -46.2828
 rect_scale = Vector2( 1.371, 1.353 )
-texture = ExtResource( 4 )
+texture = ExtResource( 15 )
 stretch_mode = 3
 script = ExtResource( 5 )
 __meta__ = {

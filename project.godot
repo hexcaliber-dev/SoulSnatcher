@@ -39,7 +39,11 @@ _global_script_class_icons={
 [application]
 
 config/name="SoulSnatcher"
-run/main_scene="res://Assets/src/Player.tscn"
+run/main_scene="res://Assets/src/TitleScreen.tscn"
+boot_splash/image="res://Assets/Sprites/logo_trisagion_dark.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [display]

@@ -47,6 +47,7 @@ scale = Vector2( 2.05835, 2.11051 )
 position = Vector2( 799.193, 880.01 )
 scale = Vector2( 2.30609, 2.30609 )
 frames = SubResource( 5 )
+frame = 2
 playing = true
 script = ExtResource( 5 )
 
@@ -54,6 +55,7 @@ script = ExtResource( 5 )
 position = Vector2( 1126.95, 880.01 )
 scale = Vector2( 2.30609, 2.30609 )
 frames = SubResource( 5 )
+frame = 2
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

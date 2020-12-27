@@ -7,6 +7,7 @@ export (NodePath) var player_animated_sprite_object_path
 
 
 enum ATTACK_STATE {NEUTRAL, DASHING, DASHED}
+enum DASH_STATE {DASHING1, DASHING2, DASHING3}
 
 var vertical_input_strength
 var horizontal_input_strength
@@ -23,6 +24,7 @@ export var current_luminence = 100
 export var speed:= 500
 export var drag_weight:= 10
 export var dash_start_time:= 0.2
+export var dash_hide_time := 0.2
 export var light_scale_min:= 0
 export var light_scale_max:= 3
 export var luminence_reduction_rate:= 0.1
@@ -83,12 +85,23 @@ func movement(delta):
 
 func dash():
 	var radians = get_angle_to(get_global_mouse_position())
-	if (sin(radians) > 0): player_animated_sprite.play("reaper_down_blade")
-	else: player_animated_sprite.play("reaper_up_blade")
+	if (sin(radians) > 0): 
+		player_animated_sprite.play("reaper_down_blade")
+	else: 
+		player_animated_sprite.play("reaper_up_blade")
+	# TODO - Play Dash Animation immediately
 	yield(get_tree().create_timer(dash_start_time), "timeout")
+	# Make Player dissappear for a second
+	player_animated_sprite.visible = false
+	yield(get_tree().create_timer(dash_hide_time), "timeout")
+	# Make Player reappear at location
+	player_animated_sprite.visible = true
+	# Pan camera to Player
 	emit_signal("dash_signal")
-	if (sin(radians) > 0): player_animated_sprite.play("reaper_down")
-	else: player_animated_sprite.play("reaper_up")
+	if (sin(radians) > 0): 
+		player_animated_sprite.play("reaper_down")
+	else: 
+		player_animated_sprite.play("reaper_up")
 	print(cos(radians))
 	position += Vector2(cos(radians), sin(radians)) * 400
 	attack_state = ATTACK_STATE.NEUTRAL
@@ -126,7 +139,7 @@ func on_DashCast_function(objectHit):
 		attack_state = ATTACK_STATE.DASHING
 		dash()
 	if(objectHit != null and attack_state == ATTACK_STATE.DASHING): 
-		print("Enemy Hit")
+		# print("Enemy Hit")
 		objectHit.die()
 		slash_charges += 1
 
