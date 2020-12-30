@@ -27,7 +27,7 @@ var dash_hit_audio = load("res://Assets/src/DashHitAudio.tscn")
 export var current_luminence = 100
 export var speed:= 500
 export var drag_weight:= 10
-export var dash_start_time:= 0.2
+export var dash_start_time:= 0.08
 export var dash_hide_time := 0.2
 export var light_scale_min:= 0
 export var light_scale_max:= 3
@@ -103,12 +103,15 @@ func dash():
 	dash_trail_instance.set_position( position + Vector2(cos(radians), sin(radians)) * 200)
 	dash_audio_instance.set_position( position )
 	
-	player_animated_sprite.visible = false
+	# player_animated_sprite.visible = false
 
 	yield(get_tree().create_timer(dash_start_time), "timeout")
-	# Make Player dissappear for a second
 	
-	# yield(get_tree().create_timer(dash_hide_time), "timeout")
+	# Make Player dissappear for a second
+	player_animated_sprite.visible = false
+	
+	
+	yield(get_tree().create_timer(dash_hide_time), "timeout")
 	# Make Player reappear at location
 	player_animated_sprite.visible = true
 	# Pan camera to Player
