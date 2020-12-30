@@ -1,12 +1,12 @@
 extends Actor
 class_name Enemy
 
-export (NodePath) var playerObjectPath
+
 
 export var speed:= 100
 export var wisp_drop_number:= 2
 
-onready var PlayerObject:= get_node(playerObjectPath)
+var PlayerObject
 onready var wispScene:= load("res://Assets/src/Wisp.tscn")
 
 var dead = false
@@ -32,6 +32,10 @@ func _physics_process(delta):
 	if PlayerObject != null:
 		velocity = ( PlayerObject.position - position).normalized() * speed
 		look_at(PlayerObject.position)
+		if(get_slide_count() > 0):
+			var collision_info = get_slide_collision(0)
+			if collision_info and collision_info.get_collider() is Player:
+				print("Player Hit")
 	else:
 		PlayerObject = get_parent().get_node("Player")
 
@@ -43,8 +47,9 @@ func die():
 		if PlayerObject != null:
 			yield(get_tree().create_timer(PlayerObject.dash_start_time), "timeout")
 		var wisp_instance = wispScene.instance()
-		get_parent().add_child(wisp_instance)
+		
 		# wisp_instance.position = position
 		wisp_instance.set_position(position)
 		yield(get_tree().create_timer(0.2), "timeout") # Temporary until death animation
+		get_parent().add_child(wisp_instance)
 		queue_free()

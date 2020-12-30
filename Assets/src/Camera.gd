@@ -2,8 +2,8 @@ extends Camera2D
 
 export (NodePath) var playerObjectPath
 
-export var camera_speed:= 5
-export var camera_follow_time:= 0
+export var camera_speed:= 4.5
+export var camera_follow_time:= 0.0
 
 onready var PlayerObject:= get_node(playerObjectPath)
 var dashing = false

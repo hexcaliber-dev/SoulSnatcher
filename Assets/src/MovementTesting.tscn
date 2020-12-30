@@ -31,7 +31,6 @@ tile_data = PoolIntArray( -1769521, 2, 0, -1769520, 2, 0, -1769519, 2, 0, -17695
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 307.296, 202.261 )
 collision_layer = 8
-playerObjectPath = NodePath("../Player")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2( 527.262, 316.357 )

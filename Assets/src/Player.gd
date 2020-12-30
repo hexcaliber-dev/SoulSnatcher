@@ -44,7 +44,7 @@ export(StreamTexture) var crosshair_1
 export(StreamTexture) var crosshair_2
 
 onready var player_light = get_node(player_light_object_path)
-onready var player_sprite = get_node(player_sprite_object_path)
+# onready var player_sprite = get_node(player_sprite_object_path)
 onready var player_animated_sprite = get_node(player_animated_sprite_object_path)
 
 signal dash_signal
