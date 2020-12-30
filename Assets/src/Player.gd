@@ -21,6 +21,8 @@ var time = 0
 var total_soul_count = 0
 
 var dash_trail = load("res://Assets/src/DashTrail.tscn")
+var dash_audio = load("res://Assets/src/DashAudio.tscn")
+var dash_hit_audio = load("res://Assets/src/DashHitAudio.tscn")
 
 export var current_luminence = 100
 export var speed:= 500
@@ -94,15 +96,19 @@ func dash():
 		player_animated_sprite.play("reaper_up_blade")
 
 	var dash_trail_instance = dash_trail.instance()
+	var dash_audio_instance = dash_audio.instance()
 	dash_trail_instance.set_rotation(radians)
 	get_parent().add_child(dash_trail_instance)
+	get_parent().add_child(dash_audio_instance)
 	dash_trail_instance.set_position( position + Vector2(cos(radians), sin(radians)) * 200)
+	dash_audio_instance.set_position( position )
 	
+	player_animated_sprite.visible = false
 
 	yield(get_tree().create_timer(dash_start_time), "timeout")
 	# Make Player dissappear for a second
-	player_animated_sprite.visible = false
-	yield(get_tree().create_timer(dash_hide_time), "timeout")
+	
+	# yield(get_tree().create_timer(dash_hide_time), "timeout")
 	# Make Player reappear at location
 	player_animated_sprite.visible = true
 	# Pan camera to Player
@@ -149,6 +155,9 @@ func on_DashCast_function(objectHit):
 		dash()
 	if(objectHit != null and attack_state == ATTACK_STATE.DASHING): 
 		# print("Enemy Hit")
+		var dash_hit_audio_instance = dash_hit_audio.instance()
+		dash_hit_audio_instance.set_position( position )
+		get_parent().add_child(dash_hit_audio_instance)
 		objectHit.die()
 		slash_charges += 1
 

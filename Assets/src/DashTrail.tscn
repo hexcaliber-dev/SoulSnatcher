@@ -36,7 +36,7 @@ script = ExtResource( 2 )
 dash_animation_object_path = NodePath("AnimatedSprite")
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 4, 2 )
+scale = Vector2( 6.5, 4 )
 frames = SubResource( 5 )
 frame = 1
 playing = true

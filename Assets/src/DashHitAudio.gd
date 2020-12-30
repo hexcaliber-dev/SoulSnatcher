@@ -1,10 +1,8 @@
 extends Node2D
 
-export (NodePath) var dash_animation_object_path
+export (NodePath) var dash_hit_sound_object_path
 
-
-onready var dash_animation = get_node(dash_animation_object_path)
-
+onready var dash_hit_sound = get_node(dash_hit_sound_object_path)
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -13,10 +11,9 @@ onready var dash_animation = get_node(dash_animation_object_path)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	dash_animation.play()
+	dash_hit_sound.play()
 
 
 
-func _on_AnimatedSprite_animation_finished():
+func _on_AudioStreamPlayer2D_finished():
 	queue_free()
-
