@@ -48,5 +48,5 @@ shape = SubResource( 1 )
 position = Vector2( -5.02826, -0.0171337 )
 rotation = -1.56758
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true

@@ -23,6 +23,7 @@ var total_soul_count = 0
 var dash_trail = load("res://Assets/src/DashTrail.tscn")
 var dash_audio = load("res://Assets/src/DashAudio.tscn")
 var dash_hit_audio = load("res://Assets/src/DashHitAudio.tscn")
+var hit_confirm = load("res://Assets/src/HitConfirm.tscn")
 
 export var current_luminence = 100
 export var speed:= 500
@@ -159,8 +160,11 @@ func on_DashCast_function(objectHit):
 	if(objectHit != null and attack_state == ATTACK_STATE.DASHING): 
 		# print("Enemy Hit")
 		var dash_hit_audio_instance = dash_hit_audio.instance()
+		var hit_confirm_instance = hit_confirm.instance()
 		dash_hit_audio_instance.set_position( position )
+		hit_confirm_instance.set_position( objectHit.position )
 		get_parent().add_child(dash_hit_audio_instance)
+		get_parent().add_child(hit_confirm_instance)
 		objectHit.die()
 		slash_charges += 1
 
