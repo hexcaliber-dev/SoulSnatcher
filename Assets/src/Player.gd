@@ -20,6 +20,8 @@ var slash_charges = 2
 var time = 0
 var total_soul_count = 0
 
+var dash_trail = load("res://Assets/src/DashTrail.tscn")
+
 export var current_luminence = 100
 export var speed:= 500
 export var drag_weight:= 10
@@ -90,7 +92,13 @@ func dash():
 		player_animated_sprite.play("reaper_down_blade")
 	else: 
 		player_animated_sprite.play("reaper_up_blade")
-	# TODO - Play Dash Animation immediately
+
+	var dash_trail_instance = dash_trail.instance()
+	dash_trail_instance.set_rotation(radians)
+	get_parent().add_child(dash_trail_instance)
+	dash_trail_instance.set_position( position + Vector2(cos(radians), sin(radians)) * 200)
+	
+
 	yield(get_tree().create_timer(dash_start_time), "timeout")
 	# Make Player dissappear for a second
 	player_animated_sprite.visible = false
