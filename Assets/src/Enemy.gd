@@ -9,6 +9,7 @@ export var wisp_drop_number:= 2
 var PlayerObject
 onready var wispScene:= load("res://Assets/src/Wisp.tscn")
 
+
 var dead = false
 # Declare member variables here. Examples:
 # var a = 2
@@ -48,8 +49,10 @@ func die():
 			yield(get_tree().create_timer(PlayerObject.dash_start_time), "timeout")
 		var wisp_instance = wispScene.instance()
 		
+		
 		# wisp_instance.position = position
 		wisp_instance.set_position(position)
+		
 		yield(get_tree().create_timer(0.2), "timeout") # Temporary until death animation
 		get_parent().add_child(wisp_instance)
 		queue_free()

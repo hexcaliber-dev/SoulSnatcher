@@ -4,6 +4,8 @@ class_name Wisp
 export var speed := 500
 export var increase_luminence_amount:= 20
 
+onready var soulCollectScene := load("res://Assets/src/SoulCollect.tscn")
+
 # current player in range
 var player:Actor = null
 
@@ -34,5 +36,8 @@ func _on_Magnet_body_exited(body: Node) -> void:
 func _on_PlayerTouch_body_entered(body: Node) -> void:
 	yield(get_tree().create_timer(0.1), "timeout")
 	if (body is Player):
+		var soul_collect_instance = soulCollectScene.instance()
+		soul_collect_instance.set_position(position)
+		get_parent().add_child(soul_collect_instance)
 		body.increase_luminence(increase_luminence_amount)
 		queue_free()

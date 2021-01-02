@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://SoulCollect.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sounds/soulsuck.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sounds/collect.wav" type="AudioStream" id=3]
+
+[node name="SoulCollect" type="Node2D"]
+script = ExtResource( 1 )
+collect_sound_object_path = NodePath("Collect")
+suck_sound_object_path = NodePath("Suck")
+
+[node name="Collect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Suck" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+[connection signal="finished" from="Collect" to="." method="_on_Collect_finished"]
+[connection signal="finished" from="Suck" to="." method="_on_Suck_finished"]
