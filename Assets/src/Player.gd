@@ -50,6 +50,7 @@ onready var player_animated_sprite = get_node(player_animated_sprite_object_path
 
 signal dash_signal
 signal cursor_signal
+signal frame_freeze_requested
 
 
 func get_current_luminence(): return current_luminence/max_luminence
@@ -159,13 +160,17 @@ func on_DashCast_function(objectHit):
 		dash()
 	if(objectHit != null and attack_state == ATTACK_STATE.DASHING): 
 		# print("Enemy Hit")
+		
 		var dash_hit_audio_instance = dash_hit_audio.instance()
 		var hit_confirm_instance = hit_confirm.instance()
 		dash_hit_audio_instance.set_position( position )
 		hit_confirm_instance.set_position( objectHit.position )
 		get_parent().add_child(dash_hit_audio_instance)
 		get_parent().add_child(hit_confirm_instance)
-		objectHit.die()
+		yield(get_tree().create_timer(0.1), "timeout")
+		emit_signal("frame_freeze_requested")
+		if (objectHit != null): 
+			objectHit.die()
 		slash_charges += 1
 
 func _on_DashCast_dashPressed(objectHit):
