@@ -13,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (Input.is_action_just_released("Dash")):
 		# print("hello")
 		#if( is_colliding() ): Uncomment when want only when hitting enemy

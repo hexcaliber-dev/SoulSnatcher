@@ -9,7 +9,7 @@ onready var soulCollectScene := load("res://Assets/src/SoulCollect.tscn")
 # current player in range
 var player:Actor = null
 
-func _process(delta):
+func _process(_delta):
 	pass
 	
 # If player in range, moves toward player; if not, slows to stop
@@ -29,7 +29,7 @@ func _on_Magnet_body_entered(body: Node) -> void:
 	player = body as Actor
 
 # If a player leaves magnet range, no longer is detected
-func _on_Magnet_body_exited(body: Node) -> void:
+func _on_Magnet_body_exited(_body: Node) -> void:
 	player = null
 
 # If a player comes into contact with wisp, wisp will disappear

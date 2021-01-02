@@ -29,7 +29,7 @@ func init(player):
 #func _process(delta):
 #	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if PlayerObject != null:
 		velocity = ( PlayerObject.position - position).normalized() * speed
 		look_at(PlayerObject.position)

@@ -16,7 +16,7 @@ var player
 func _ready():
 	player = player_hud.get_player()
 	
-func _process(delta):
+func _process(_delta):
 	set_text(str(player.get_total_soul_count()))
 
 

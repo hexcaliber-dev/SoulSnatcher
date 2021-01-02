@@ -28,7 +28,7 @@ var current_luminence = 0
 func _ready():
 	player = player_hud.get_player()
 	
-func _process(delta):
+func _process(_delta):
 	current_luminence = player.get_current_luminence()
 	if (current_luminence <= 0.0): set_texture(null)
 	if (current_luminence <= 0.1): set_texture(full1)
