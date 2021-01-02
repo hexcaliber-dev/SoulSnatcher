@@ -51,6 +51,6 @@ player_object_path = NodePath("../../Player")
 
 [node name="FrameFreezer" type="Node2D" parent="."]
 script = ExtResource( 10 )
-delay_seconds = 80
+delay_seconds = 40
 [connection signal="cursor_signal" from="Player" to="MouseCursor" method="_on_Player_cursor_signal"]
 [connection signal="dash_signal" from="Player" to="PlayerCamera" method="_on_Player_dash_signal"]
