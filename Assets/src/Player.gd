@@ -19,6 +19,7 @@ var attack_state = ATTACK_STATE.NEUTRAL
 var slash_charges = 2
 var time = 0
 var total_soul_count = 0
+var frame_freeze_requested = false;
 
 var dash_trail = load("res://Assets/src/DashTrail.tscn")
 var dash_audio = load("res://Assets/src/DashAudio.tscn")
@@ -125,6 +126,8 @@ func dash():
 	print(cos(radians))
 	position += Vector2(cos(radians), sin(radians)) * 400
 	attack_state = ATTACK_STATE.NEUTRAL
+	
+	frame_freeze_requested = false
 	# position += get_angle_to(get_global_mouse_position())
 	
 func charge_dash(delta):
@@ -158,19 +161,22 @@ func on_DashCast_function(objectHit):
 		slash_charges -= 1
 		attack_state = ATTACK_STATE.DASHING
 		dash()
-	if(objectHit != null and attack_state == ATTACK_STATE.DASHING): 
+	if(objectHit.size() != 0 and attack_state == ATTACK_STATE.DASHING): 
 		# print("Enemy Hit")
-		
-		var dash_hit_audio_instance = dash_hit_audio.instance()
-		var hit_confirm_instance = hit_confirm.instance()
-		dash_hit_audio_instance.set_position( position )
-		hit_confirm_instance.set_position( objectHit.position )
-		get_parent().add_child(dash_hit_audio_instance)
-		get_parent().add_child(hit_confirm_instance)
-		yield(get_tree().create_timer(0.1), "timeout")
-		emit_signal("frame_freeze_requested")
-		if (objectHit != null): 
-			objectHit.die()
+		print(objectHit)
+		for oh in objectHit:
+			var dash_hit_audio_instance = dash_hit_audio.instance()
+			var hit_confirm_instance = hit_confirm.instance()
+			dash_hit_audio_instance.set_position( position )
+			if (oh != null): hit_confirm_instance.set_position( oh.position )
+			get_parent().add_child(dash_hit_audio_instance)
+			get_parent().add_child(hit_confirm_instance)
+			yield(get_tree().create_timer(0.1), "timeout")
+			if !frame_freeze_requested:
+				print("Requested")
+				emit_signal("frame_freeze_requested")
+				frame_freeze_requested = true
+			if (oh != null): oh.die()
 		slash_charges += 1
 
 func _on_DashCast_dashPressed(objectHit):

@@ -36,7 +36,8 @@ func _physics_process(_delta):
 		if(get_slide_count() > 0):
 			var collision_info = get_slide_collision(0)
 			if collision_info and collision_info.get_collider() is Player:
-				print("Player Hit")
+				# print("Player Hit")
+				pass
 	else:
 		PlayerObject = get_parent().get_node("Player")
 
