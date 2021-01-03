@@ -204,6 +204,7 @@ scale = Vector2( 1, 8.36 )
 enabled = true
 collision_mask = 8
 script = ExtResource( 4 )
+player_object_path = NodePath("../..")
 
 [node name="DashCast2" type="RayCast2D" parent="DashObject"]
 position = Vector2( 32.5881, -21.7178 )
@@ -212,6 +213,7 @@ scale = Vector2( 1, 8.36 )
 enabled = true
 collision_mask = 8
 script = ExtResource( 4 )
+player_object_path = NodePath("../..")
 
 [node name="DashCast3" type="RayCast2D" parent="DashObject"]
 position = Vector2( 32.5881, 21.6645 )
@@ -220,6 +222,7 @@ scale = Vector2( 1, 8.36 )
 enabled = true
 collision_mask = 8
 script = ExtResource( 4 )
+player_object_path = NodePath("../..")
 
 [node name="Sprite" type="Sprite" parent="DashObject"]
 scale = Vector2( 0.552339, 0.552339 )

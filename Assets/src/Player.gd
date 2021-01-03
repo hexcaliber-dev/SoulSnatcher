@@ -104,16 +104,10 @@ func dash():
 	dash_trail_instance.set_position( position + Vector2(cos(radians), sin(radians)) * 200)
 	dash_audio_instance.set_position( position )
 	get_parent().add_child(dash_trail_instance)
-	
-	
-	# player_animated_sprite.visible = false
-
 	yield(get_tree().create_timer(dash_start_time), "timeout")
 	get_parent().add_child(dash_audio_instance)
 	# Make Player dissappear for a second
 	player_animated_sprite.visible = false
-	
-	
 	yield(get_tree().create_timer(dash_hide_time), "timeout")
 	# Make Player reappear at location
 	player_animated_sprite.visible = true
@@ -164,13 +158,17 @@ func on_DashCast_function(objectHit):
 	if(objectHit.size() != 0 and attack_state == ATTACK_STATE.DASHING): 
 		# print("Enemy Hit")
 		print(objectHit)
+		var hit_played = false;
 		for oh in objectHit:
 			var dash_hit_audio_instance = dash_hit_audio.instance()
 			var hit_confirm_instance = hit_confirm.instance()
 			dash_hit_audio_instance.set_position( position )
 			if (oh != null): hit_confirm_instance.set_position( oh.position )
-			get_parent().add_child(dash_hit_audio_instance)
+			
 			get_parent().add_child(hit_confirm_instance)
+			if (true):
+				get_parent().add_child(dash_hit_audio_instance)
+				hit_played = true
 			yield(get_tree().create_timer(0.1), "timeout")
 			if !frame_freeze_requested:
 				print("Requested")
@@ -178,6 +176,11 @@ func on_DashCast_function(objectHit):
 				frame_freeze_requested = true
 			if (oh != null): oh.die()
 		slash_charges += 1
+
+
+func is_dashing():
+	if (attack_state == ATTACK_STATE.DASHING): return true 
+	else: return false
 
 func _on_DashCast_dashPressed(objectHit):
 	on_DashCast_function(objectHit)

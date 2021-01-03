@@ -2,6 +2,9 @@ extends RayCast2D
 
 signal dashPressed(objectHit)
 
+export (NodePath) var player_object_path
+
+onready var player = get_node(player_object_path)
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,7 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if (Input.is_action_just_released("Dash")):
+	if (Input.is_action_just_released("Dash") and !player.is_dashing()):
 		# print("hello")
 		#if( is_colliding() ): Uncomment when want only when hitting enemy
 		
