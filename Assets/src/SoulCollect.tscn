@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://SoulCollect.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sounds/soulsuck.wav" type="AudioStream" id=2]
-[ext_resource path="res://Assets/Sounds/collect.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/soulsuck (1).wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sounds/collect (1).wav" type="AudioStream" id=3]
 
 [node name="SoulCollect" type="Node2D"]
 script = ExtResource( 1 )

@@ -101,15 +101,15 @@ func dash():
 	var dash_trail_instance = dash_trail.instance()
 	var dash_audio_instance = dash_audio.instance()
 	dash_trail_instance.set_rotation(radians)
-	get_parent().add_child(dash_trail_instance)
-	get_parent().add_child(dash_audio_instance)
 	dash_trail_instance.set_position( position + Vector2(cos(radians), sin(radians)) * 200)
 	dash_audio_instance.set_position( position )
+	get_parent().add_child(dash_trail_instance)
+	
 	
 	# player_animated_sprite.visible = false
 
 	yield(get_tree().create_timer(dash_start_time), "timeout")
-	
+	get_parent().add_child(dash_audio_instance)
 	# Make Player dissappear for a second
 	player_animated_sprite.visible = false
 	
