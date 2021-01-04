@@ -1,6 +1,5 @@
 extends Control
 
-
 export (NodePath) var player_object_path
 
 # Declare member variables here. Examples:
