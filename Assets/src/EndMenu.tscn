@@ -1,8 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/src/StartButton.gd" type="Script" id=1]
 [ext_resource path="res://Assets/src/MouseCursor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/src/PlayerLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/soul_coward-3-0.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/soul_coward-0-0.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/soul_coward-1-0.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/soul_coward-2-0.png" type="Texture" id=7]
+
+[sub_resource type="AnimatedTexture" id=1]
+flags = 4
+frames = 4
+fps = 8.0
+frame_0/texture = ExtResource( 5 )
+frame_1/texture = ExtResource( 6 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 7 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 4 )
+frame_3/delay_sec = 0.0
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -19,6 +35,36 @@ anchor_bottom = 1.0
 margin_left = -20.0
 margin_top = -40.0
 margin_right = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+anchor_left = -3.678
+anchor_top = -5.191
+anchor_right = -1.589
+anchor_bottom = -2.378
+margin_left = 3.53127
+margin_top = -20.6376
+margin_right = 47.9713
+margin_bottom = -66.1576
+rect_scale = Vector2( 2, 2 )
+texture = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
+anchor_left = 3.177
+anchor_top = -5.653
+anchor_right = 5.366
+anchor_bottom = -2.378
+margin_left = 13.2164
+margin_top = 2.57527
+margin_right = 53.6564
+margin_bottom = -61.4247
+rect_scale = Vector2( 2, 2 )
+texture = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

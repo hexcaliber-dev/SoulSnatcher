@@ -1,8 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/src/StartButton.gd" type="Script" id=1]
 [ext_resource path="res://Assets/src/MouseCursor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/src/PlayerLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/soul_coward-3-0.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/soul_coward-0-0.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/soul_coward-1-0.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/soul_coward-2-0.png" type="Texture" id=7]
+
+[sub_resource type="AnimatedTexture" id=1]
+flags = 4
+frames = 4
+fps = 8.0
+frame_0/texture = ExtResource( 5 )
+frame_1/texture = ExtResource( 6 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 7 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 4 )
+frame_3/delay_sec = 0.0
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -23,11 +39,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+anchor_left = -3.678
+anchor_top = -5.191
+anchor_right = -1.589
+anchor_bottom = -2.378
+margin_left = -0.00840759
+margin_top = -21.4792
+margin_right = 44.4316
+margin_bottom = -66.9993
+rect_scale = Vector2( 2, 2 )
+texture = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
+anchor_left = 3.177
+anchor_top = -5.653
+anchor_right = 5.366
+anchor_bottom = -2.378
+margin_left = -0.0182495
+margin_top = -0.00267029
+margin_right = 40.4218
+margin_bottom = -64.0027
+rect_scale = Vector2( 2, 2 )
+texture = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button" type="Button" parent="NinePatchRect"]
-margin_left = -46.083
-margin_top = -174.119
-margin_right = -5.08301
-margin_bottom = -154.119
+anchor_left = -1.152
+anchor_top = -4.353
+anchor_right = 1.926
+anchor_bottom = -2.851
+margin_left = -0.00299835
+margin_top = 0.00100708
+margin_right = -82.123
+margin_bottom = -40.079
 rect_scale = Vector2( 3.00314, 3.00314 )
 text = "Start"
 script = ExtResource( 1 )
@@ -37,6 +87,6 @@ __meta__ = {
 light_object_path = NodePath("Light2D")
 
 [node name="Light2D" parent="NinePatchRect/Button" instance=ExtResource( 3 )]
-position = Vector2( 21.8251, 9.42331 )
+position = Vector2( 21.5756, 9.67276 )
 
 [node name="MouseCursor" parent="." instance=ExtResource( 2 )]

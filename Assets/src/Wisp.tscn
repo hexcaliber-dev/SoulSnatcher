@@ -57,7 +57,7 @@ energy = 1.08
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.54838, 1.54838 )
 frames = SubResource( 5 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Magnet" type="Area2D" parent="."]
