@@ -2,11 +2,12 @@
 
 [ext_resource path="res://Assets/src/StartButton.gd" type="Script" id=1]
 [ext_resource path="res://Assets/src/MouseCursor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/src/PlayerLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/src/ObjectLight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Sprites/soul_coward-3-0.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sprites/soul_coward-0-0.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/soul_coward-1-0.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/soul_coward-2-0.png" type="Texture" id=7]
+
 
 [sub_resource type="AnimatedTexture" id=1]
 flags = 4
