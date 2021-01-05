@@ -57,12 +57,14 @@ light_mask = -2147483639
 position = Vector2( -5.02826, -0.0171337 )
 rotation = -1.56758
 frames = SubResource( 6 )
+frame = 2
 playing = true
 
 [node name="EnemyLight" parent="." instance=ExtResource( 2 )]
 texture_scale = 0.06
-energy = 0.25
+energy = 0.5
 range_item_cull_mask = 24
+in_global_list = false
 
 [node name="LightCover" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )

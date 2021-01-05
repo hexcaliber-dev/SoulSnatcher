@@ -1,5 +1,7 @@
 extends Light2D
 
+export var in_global_list = true
+
 onready var global_vars = get_node("/root/Global")
 
 # Called when the node enters the scene tree for the first time.
@@ -13,8 +15,10 @@ func _process(delta: float) -> void:
 
 
 func _on_VisibilityNotifier2D_screen_entered() -> void:
-	global_vars.lights_array.append(self)
+	if (in_global_list):
+		global_vars.lights_array.append(self)
 
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
-	global_vars.lights_array.remove(global_vars.lights_array.find(self))
+	if (in_global_list):
+		global_vars.lights_array.remove(global_vars.lights_array.find(self))
