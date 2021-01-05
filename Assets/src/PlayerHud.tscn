@@ -3,23 +3,27 @@
 [ext_resource path="res://Assets/Sprites/soulcounter.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/luminance_empty.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/upgrade_tier_1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/hud_pause_button_unpressed.png" type="Texture" id=4]
 [ext_resource path="res://Assets/src/LuminenceMeter.gd" type="Script" id=5]
-[ext_resource path="res://Assets/Sprites/luminance_bar_2.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/luminance_bar_1.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/luminance_bar_4.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/luminance_bar_5.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/luminance_bar_3.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Sprites/luminance_bar_9.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Sprites/luminance_bar_8.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Sprites/luminance_bar_7.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Sprites/luminance_bar_6.png" type="Texture" id=14]
+[ext_resource path="res://Assets/src/DashBar.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Sprites/luminance_bar_full.png" type="Texture" id=15]
 [ext_resource path="res://Assets/src/PlayerHud.gd" type="Script" id=16]
 [ext_resource path="res://Assets/src/SoulAmountLabel.gd" type="Script" id=17]
+[ext_resource path="res://Assets/Sprites/hud_pause_button_pressed.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/hud_gauge_luminance_full.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/hud_gauge_dashslash_3.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/hud_gauge_luminance_empty.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/hud_gauge_dashslash_full.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/hud_gauge_powerup_bg.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/hud_gauge_dashslash_0.png" type="Texture" id=24]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 14.4189
+margin_top = 18.0201
+margin_right = 14.4189
+margin_bottom = 18.0201
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -54,6 +58,7 @@ __meta__ = {
 player_hud_path = NodePath("../..")
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -85,21 +90,9 @@ margin_bottom = -46.2828
 rect_scale = Vector2( 1.371, 1.353 )
 texture = ExtResource( 15 )
 stretch_mode = 3
-script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-player_hud_path = NodePath("../..")
-full10 = ExtResource( 15 )
-full9 = ExtResource( 11 )
-full8 = ExtResource( 12 )
-full7 = ExtResource( 13 )
-full6 = ExtResource( 14 )
-full5 = ExtResource( 9 )
-full4 = ExtResource( 8 )
-full3 = ExtResource( 10 )
-full2 = ExtResource( 6 )
-full1 = ExtResource( 7 )
 
 [node name="TextureRect3" type="TextureRect" parent="NinePatchRect2"]
 margin_left = -40.4932
@@ -111,3 +104,134 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Pause" type="TextureButton" parent="."]
+anchor_left = 0.953
+anchor_top = 0.059
+anchor_right = 0.953
+anchor_bottom = 0.059
+margin_left = -43.4244
+margin_top = -44.0215
+margin_right = 0.575562
+margin_bottom = -0.0215187
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.295
+anchor_top = 0.797
+anchor_right = 0.676
+anchor_bottom = 0.964
+margin_left = 0.383667
+margin_top = 0.160583
+margin_right = -365.136
+margin_bottom = -90.1993
+rect_scale = Vector2( 2, 2 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 9.0
+margin_right = 129.0
+margin_bottom = 90.0
+alignment = 1
+
+[node name="TextureProgress" type="TextureProgress" parent="HBoxContainer/VBoxContainer"]
+margin_top = 35.0
+margin_right = 120.0
+margin_bottom = 55.0
+value = 70.0
+texture_under = ExtResource( 21 )
+texture_progress = ExtResource( 19 )
+fill_mode = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+player_hud_path = NodePath("../../..")
+
+[node name="BarCenter" type="TextureRect" parent="HBoxContainer"]
+margin_left = 133.0
+margin_right = 231.0
+margin_bottom = 90.0
+texture = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 235.0
+margin_right = 356.0
+margin_bottom = 90.0
+alignment = 1
+
+[node name="Dash" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 35.0
+margin_right = 121.0
+margin_bottom = 55.0
+custom_constants/separation = -1
+
+[node name="Dash1" type="TextureProgress" parent="HBoxContainer/VBoxContainer2/Dash"]
+margin_right = 25.0
+margin_bottom = 20.0
+texture_under = ExtResource( 24 )
+texture_over = ExtResource( 22 )
+texture_progress = ExtResource( 20 )
+fill_mode = 3
+script = ExtResource( 6 )
+player_hud_path = NodePath("../../../..")
+
+[node name="Dash2" type="TextureProgress" parent="HBoxContainer/VBoxContainer2/Dash"]
+margin_left = 24.0
+margin_right = 49.0
+margin_bottom = 20.0
+texture_under = ExtResource( 24 )
+texture_over = ExtResource( 22 )
+texture_progress = ExtResource( 20 )
+fill_mode = 3
+script = ExtResource( 6 )
+dashNum = 1
+player_hud_path = NodePath("../../../..")
+
+[node name="Dash3" type="TextureProgress" parent="HBoxContainer/VBoxContainer2/Dash"]
+margin_left = 48.0
+margin_right = 73.0
+margin_bottom = 20.0
+texture_under = ExtResource( 24 )
+texture_over = ExtResource( 22 )
+texture_progress = ExtResource( 20 )
+fill_mode = 3
+script = ExtResource( 6 )
+dashNum = 2
+player_hud_path = NodePath("../../../..")
+
+[node name="Dash4" type="TextureProgress" parent="HBoxContainer/VBoxContainer2/Dash"]
+margin_left = 72.0
+margin_right = 97.0
+margin_bottom = 20.0
+texture_under = ExtResource( 24 )
+texture_over = ExtResource( 22 )
+texture_progress = ExtResource( 20 )
+fill_mode = 3
+script = ExtResource( 6 )
+dashNum = 3
+player_hud_path = NodePath("../../../..")
+
+[node name="Dash5" type="TextureProgress" parent="HBoxContainer/VBoxContainer2/Dash"]
+margin_left = 96.0
+margin_right = 121.0
+margin_bottom = 20.0
+texture_under = ExtResource( 24 )
+texture_over = ExtResource( 22 )
+texture_progress = ExtResource( 20 )
+fill_mode = 3
+script = ExtResource( 6 )
+dashNum = 4
+player_hud_path = NodePath("../../../..")
