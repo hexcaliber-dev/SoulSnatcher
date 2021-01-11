@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Sprites/soulcounter.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/luminance_empty.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Assets/Sprites/hud_pause_button_unpressed.png" type="Texture" id=4]
 [ext_resource path="res://Assets/src/LuminenceMeter.gd" type="Script" id=5]
 [ext_resource path="res://Assets/src/DashBar.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Sprites/attackchain_full.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Fonts/Harvest_of_Souls.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Assets/Sprites/luminance_bar_full.png" type="Texture" id=15]
 [ext_resource path="res://Assets/src/PlayerHud.gd" type="Script" id=16]
 [ext_resource path="res://Assets/src/SoulAmountLabel.gd" type="Script" id=17]
@@ -16,6 +18,9 @@
 [ext_resource path="res://Assets/Sprites/hud_gauge_dashslash_full.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Sprites/hud_gauge_powerup_bg.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Sprites/hud_gauge_dashslash_0.png" type="Texture" id=24]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 8 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -137,7 +142,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureProgress" type="TextureProgress" parent="BarCenter"]
+[node name="LuminanceBar" type="TextureProgress" parent="BarCenter"]
 anchor_top = 0.488791
 anchor_bottom = 0.488791
 margin_left = -106.0
@@ -154,6 +159,23 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 player_hud_path = NodePath("../..")
+
+[node name="Label" type="Label" parent="BarCenter/LuminanceBar"]
+anchor_left = 0.611
+anchor_top = -0.375
+anchor_right = 0.611
+anchor_bottom = -0.375
+margin_left = -41.0716
+margin_top = -7.51154
+margin_right = 66.9284
+margin_bottom = 14.4815
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 1 )
+text = "LUMINANCE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Dash1" type="TextureProgress" parent="BarCenter"]
 anchor_left = 0.945
@@ -247,3 +269,67 @@ __meta__ = {
 }
 dashNum = 4
 player_hud_path = NodePath("../..")
+
+[node name="Label2" type="Label" parent="BarCenter"]
+anchor_left = 1.386
+anchor_top = 0.297
+anchor_right = 1.386
+anchor_bottom = 0.297
+margin_left = -37.828
+margin_top = -7.74154
+margin_right = 70.172
+margin_bottom = 14.2515
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 1 )
+text = "DASH SLASH"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.518
+anchor_top = 0.101167
+anchor_right = 0.518
+anchor_bottom = 0.101167
+margin_left = -248.419
+margin_top = -21.0575
+margin_right = -82.4193
+margin_bottom = 5.94245
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="TextureRect"]
+anchor_left = 0.516
+anchor_top = 0.24
+anchor_right = 0.516
+anchor_bottom = 0.241
+margin_left = -7.55612
+margin_top = -13.0005
+margin_right = 8.44388
+margin_bottom = 12.9725
+custom_fonts/font = SubResource( 1 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="TextureRect"]
+anchor_left = 0.508
+anchor_top = 1.045
+anchor_right = 0.508
+anchor_bottom = 1.045
+margin_left = -70.584
+margin_top = -14.2547
+margin_right = 69.416
+margin_bottom = 11.7453
+custom_fonts/font = SubResource( 1 )
+text = "ATTACK  CHAIN"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
