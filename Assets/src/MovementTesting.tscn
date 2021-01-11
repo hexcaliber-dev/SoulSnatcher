@@ -13,6 +13,10 @@
 
 [node name="MovementTesting" type="Node2D"]
 
+[node name="MouseCursor" parent="." instance=ExtResource( 9 )]
+z_index = 10
+z_as_relative = false
+
 [node name="CanvasModulate" parent="." instance=ExtResource( 5 )]
 
 [node name="abstract-galaxy-background_1199-247" type="Sprite" parent="."]
@@ -47,8 +51,6 @@ spawn_range = 500
 
 [node name="PlayerHud" parent="CanvasLayer" instance=ExtResource( 8 )]
 player_object_path = NodePath("../../Player")
-
-[node name="MouseCursor" parent="." instance=ExtResource( 9 )]
 
 [node name="FrameFreezer" type="Node2D" parent="."]
 script = ExtResource( 10 )

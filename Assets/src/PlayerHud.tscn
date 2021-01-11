@@ -242,5 +242,8 @@ texture_over = ExtResource( 22 )
 texture_progress = ExtResource( 20 )
 fill_mode = 3
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 dashNum = 4
 player_hud_path = NodePath("../..")

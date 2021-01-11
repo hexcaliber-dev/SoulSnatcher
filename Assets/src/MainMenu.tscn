@@ -8,7 +8,6 @@
 [ext_resource path="res://Assets/Sprites/soul_coward-1-0.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/soul_coward-2-0.png" type="Texture" id=7]
 
-
 [sub_resource type="AnimatedTexture" id=1]
 flags = 4
 frames = 4
@@ -27,6 +26,9 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MouseCursor" parent="." instance=ExtResource( 2 )]
+crosshair_sprite_object_path = NodePath("../NinePatchRect/MouseCursor/Light2D")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchor_left = 0.5
@@ -71,6 +73,7 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="NinePatchRect"]
+light_mask = 3
 anchor_left = -1.152
 anchor_top = -4.353
 anchor_right = 1.926
@@ -88,6 +91,4 @@ __meta__ = {
 light_object_path = NodePath("Light2D")
 
 [node name="Light2D" parent="NinePatchRect/Button" instance=ExtResource( 3 )]
-position = Vector2( 21.5756, 9.67276 )
-
-[node name="MouseCursor" parent="." instance=ExtResource( 2 )]
+position = Vector2( 22.0465, 10.6147 )

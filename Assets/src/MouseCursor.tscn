@@ -5,8 +5,10 @@
 
 [node name="MouseCursor" type="Node2D"]
 script = ExtResource( 1 )
-crosshair_sprite_object_path = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
+light_mask = -2147483647
 scale = Vector2( 0.5, 0.5 )
+z_index = 100
 texture = ExtResource( 2 )
