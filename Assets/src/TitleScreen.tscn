@@ -55,6 +55,7 @@ visible = false
 position = Vector2( 793.695, 877.34 )
 scale = Vector2( 2.30609, 2.30609 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="CanvasLayer/Control"]
@@ -62,6 +63,7 @@ visible = false
 position = Vector2( 1119.77, 880.704 )
 scale = Vector2( 2.30609, 2.30609 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
