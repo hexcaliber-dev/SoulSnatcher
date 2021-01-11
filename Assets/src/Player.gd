@@ -38,6 +38,10 @@ export var max_luminence:= 100
 export var max_dash_charges:= 2
 export var charge_time:= 2
 export var path_to_end_game:= "res://Assets/src/DeathScreen.tscn"
+export var attack_chain_count:= 0
+export var attack_chain_cooldown:= 0.0
+export var attack_chain_max_cooldown:= 1.0
+export var attack_chain_decrease:= 0.015
 
 export(Texture) var character_up
 export(Texture) var character_down
@@ -56,6 +60,8 @@ signal frame_freeze_requested
 
 func get_current_luminence(): return current_luminence/max_luminence
 func get_total_soul_count(): return total_soul_count
+func get_current_attack_chain(): return attack_chain_count
+func get_attack_chain_cooldown(): return attack_chain_cooldown / attack_chain_max_cooldown
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -75,10 +81,13 @@ func _physics_process(delta):
 	else:
 		get_tree().change_scene(path_to_end_game)
 	player_light.set_texture_scale( (current_luminence/max_luminence)*light_scale_max )
-	if(attack_state == ATTACK_STATE.DASHING):
-		pass
-	else:
+	if(attack_state != ATTACK_STATE.DASHING):
 		movement(delta)
+	if (attack_chain_cooldown > 0):
+		attack_chain_cooldown -= attack_chain_decrease
+	else:
+		attack_chain_count = 0
+		attack_chain_cooldown = 0
 	# print( get_viewport().get_mouse_position() )
 
 func movement(delta):
@@ -166,6 +175,9 @@ func on_DashCast_function(objectHit):
 			if (oh != null): hit_confirm_instance.set_position( oh.position )
 			
 			get_parent().add_child(hit_confirm_instance)
+			attack_chain_count += 1
+			attack_chain_cooldown = attack_chain_max_cooldown
+			# legacy code do not touch magic box
 			if (true):
 				get_parent().add_child(dash_hit_audio_instance)
 				hit_played = true
@@ -179,8 +191,7 @@ func on_DashCast_function(objectHit):
 
 
 func is_dashing():
-	if (attack_state == ATTACK_STATE.DASHING): return true 
-	else: return false
+	return attack_state == ATTACK_STATE.DASHING
 
 func _on_DashCast_dashPressed(objectHit):
 	on_DashCast_function(objectHit)
