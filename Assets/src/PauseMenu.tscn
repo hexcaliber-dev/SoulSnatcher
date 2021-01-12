@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/src/PauseMenu.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/Fonts/Harvest_of_Souls.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Assets/Fonts/Harvest_of_Souls.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 31
+font_data = SubResource( 3 )
+
+[node name="Control" type="Control"]
+anchor_left = 0.109
+anchor_top = 0.154
+anchor_right = 0.852
+anchor_bottom = 0.87
+margin_left = -0.280014
+margin_top = -0.320023
+margin_right = -0.840088
+margin_bottom = 0.399902
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="Panel" parent="."]
+visible = false
+anchor_left = 0.319
+anchor_top = 0.165
+anchor_right = 0.835
+anchor_bottom = 0.835
+margin_left = 0.373566
+margin_top = 0.352127
+margin_right = -0.442505
+margin_bottom = -0.227905
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseMenu"]
+anchor_left = 0.133
+anchor_top = 0.096
+anchor_right = 0.765
+anchor_bottom = 0.337
+margin_left = 21.9742
+margin_top = 0.170757
+margin_right = -350.178
+margin_bottom = -100.149
+rect_scale = Vector2( 5, 5 )
+custom_fonts/font = SubResource( 2 )
+text = "-PAUSED-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="PauseMenu"]
+anchor_left = 0.476
+anchor_top = 0.435
+anchor_right = 0.476
+anchor_bottom = 0.435
+margin_left = -107.563
+margin_top = -31.3356
+margin_right = 107.437
+margin_bottom = 31.6644
+custom_fonts/font = SubResource( 4 )
+text = "RESUME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="PauseMenu"]
+anchor_left = 0.476
+anchor_top = 0.435
+anchor_right = 0.476
+anchor_bottom = 0.435
+margin_left = -107.563
+margin_top = 49.3904
+margin_right = 107.437
+margin_bottom = 112.39
+custom_fonts/font = SubResource( 4 )
+text = "QUIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}

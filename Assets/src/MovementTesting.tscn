@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/src/Enemy.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/src/PlayerHud.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/src/MouseCursor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/src/FrameFreezer.gd" type="Script" id=10]
+[ext_resource path="res://Assets/src/PauseMenu.tscn" type="PackedScene" id=11]
 
 [node name="MovementTesting" type="Node2D"]
 
@@ -51,6 +52,9 @@ spawn_range = 500
 
 [node name="PlayerHud" parent="CanvasLayer" instance=ExtResource( 8 )]
 player_object_path = NodePath("../../Player")
+pause_menu = NodePath("../PauseMenu")
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 11 )]
 
 [node name="FrameFreezer" type="Node2D" parent="."]
 script = ExtResource( 10 )

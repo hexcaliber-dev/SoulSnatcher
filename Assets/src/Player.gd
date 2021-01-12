@@ -76,19 +76,20 @@ func _process(delta):
 	
 
 func _physics_process(delta):
-	if (current_luminence >= 0):
-		current_luminence -= luminence_reduction_rate
-	else:
-		get_tree().change_scene(path_to_end_game)
-	player_light.set_texture_scale( (current_luminence/max_luminence)*light_scale_max )
-	if(attack_state != ATTACK_STATE.DASHING):
-		movement(delta)
-	if (attack_chain_cooldown > 0):
-		attack_chain_cooldown -= attack_chain_decrease
-	else:
-		attack_chain_count = 0
-		attack_chain_cooldown = 0
-	# print( get_viewport().get_mouse_position() )
+	if (Engine.time_scale > 0):
+		if (current_luminence >= 0):
+			current_luminence -= luminence_reduction_rate
+		else:
+			get_tree().change_scene(path_to_end_game)
+		player_light.set_texture_scale( (current_luminence/max_luminence)*light_scale_max )
+		if(attack_state != ATTACK_STATE.DASHING):
+			movement(delta)
+		if (attack_chain_cooldown > 0):
+			attack_chain_cooldown -= attack_chain_decrease
+		else:
+			attack_chain_count = 0
+			attack_chain_cooldown = 0
+		# print( get_viewport().get_mouse_position() )
 
 func movement(delta):
 	if (Input.get_action_strength("Up") > 0):
